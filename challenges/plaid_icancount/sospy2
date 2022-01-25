@@ -1,0 +1,29 @@
+import angr
+import claripy
+
+FLAG_LEN = 0x13
+STDIN = 0
+
+
+proj = angr.Project('icancount', auto_load_libs=False)
+
+
+desired_adr = 0xf9a + proj.loader.main_object.min_addr
+failed_adr = 0xfae + proj.loader.main_object.min_addr
+
+charset = [claripy.BVS("flag%d" % i, 8) for i in range(FLAG_LEN)]
+flag = claripy.Concat( *charset + [claripy.BVV(b'\n')])
+
+state = proj.factory.full_init_state(args = ["./icancount"], add_options = angr.options.unicorn, stdin = flag)
+
+
+simgr = proj.factory.simulation_manager(state)
+find_addr  = 0x101124 # SUCCESS
+avoid_addr = 0x10110d # FAILURE
+simgr.explore(find=desired_adr, avoid=failed_adr)
+
+if (len(simgr.found) > 0):
+    print("ridi")
+    for f in simgr.found:
+        print(f.posix.dumps(STDIN))
+

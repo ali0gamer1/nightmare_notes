@@ -1,0 +1,245 @@
+   0x00000000004007e6 <+0>:	    push   rbp
+   0x00000000004007e7 <+1>:	    mov    rbp,rsp
+   0x00000000004007ea <+4>:	    sub    rsp,0x20
+   0x00000000004007ee <+8>:	    mov    rax,QWORD PTR fs:0x28 
+   0x00000000004007f7 <+17>:	mov    QWORD PTR [rbp-0x8],rax //Canary
+   0x00000000004007fb <+21>:	xor    eax,eax
+   0x00000000004007fd <+23>:	mov    DWORD PTR [rbp-0x14],0x0
+   0x0000000000400804 <+30>:	mov    edi,0x400c08
+   0x0000000000400809 <+35>:	call   0x400650 <puts@plt>
+   0x000000000040080e <+40>:	lea    rax,[rbp-0x14] //How long is dream
+   0x0000000000400812 <+44>:	mov    rsi,rax
+   0x0000000000400815 <+47>:	mov    edi,0x400c20
+   0x000000000040081a <+52>:	mov    eax,0x0
+   0x000000000040081f <+57>:	call   0x4006c0 <__isoc99_scanf@plt>
+   0x0000000000400824 <+62>:	mov    eax,DWORD PTR [rbp-0x14]
+   0x0000000000400827 <+65>:	cdqe   
+   0x0000000000400829 <+67>:	mov    rdi,rax
+   0x000000000040082c <+70>:	call   0x4006b0 <malloc@plt> //allocate (input) bytes in heap 
+   0x0000000000400831 <+75>:	mov    QWORD PTR [rbp-0x10],rax
+   0x0000000000400835 <+79>:	mov    edi,0x400c28
+   0x000000000040083a <+84>:	call   0x400650 <puts@plt>
+   0x000000000040083f <+89>:	mov    eax,DWORD PTR [rbp-0x14]
+   0x0000000000400842 <+92>:	movsxd rdx,eax
+   0x0000000000400845 <+95>:	mov    rax,QWORD PTR [rbp-0x10] //dream buffer
+   0x0000000000400849 <+99>:	mov    rsi,rax
+   0x000000000040084c <+102>:	mov    edi,0x0
+   0x0000000000400851 <+107>:	call   0x400690 <read@plt>
+   0x0000000000400856 <+112>:	mov    eax,DWORD PTR [rip+0x201830]        //Dreams array index
+   0x000000000040085c <+118>:	cdqe   
+   0x000000000040085e <+120>:	mov    rdx,QWORD PTR [rbp-0x10]
+   0x0000000000400862 <+124>:	mov    QWORD PTR [rax*8+0x6020a0],rdx  //Store dream in dreams array
+   0x000000000040086a <+132>:	mov    eax,DWORD PTR [rip+0x20181c]        # 0x60208c <INDEX>//Dreams sizes array index
+   0x0000000000400870 <+138>:	mov    edx,DWORD PTR [rbp-0x14] //our first input
+   0x0000000000400873 <+141>:	cdqe                                        
+
+                                                                        /*
+                                                                        *   0x6020e0 Dreams sizes array address
+                                                                        *   0x6020a0 Dreams array address
+                                                                        */
+   0x0000000000400875 <+143>:	mov    DWORD PTR [rax*4+0x6020e0],edx
+   0x000000000040087c <+150>:	mov    eax,DWORD PTR [rip+0x20180a]        # 0x60208c <INDEX>//increament dreams index
+   0x0000000000400882 <+156>:	add    eax,0x1
+   0x0000000000400885 <+159>:	mov    DWORD PTR [rip+0x201801],eax        # 0x60208c <INDEX>
+   0x000000000040088b <+165>:	nop
+   0x000000000040088c <+166>:	mov    rax,QWORD PTR [rbp-0x8]
+   0x0000000000400890 <+170>:	xor    rax,QWORD PTR fs:0x28
+   0x0000000000400899 <+179>:	je     0x4008a0 <new_dream+186>
+--Type <RET> for more, q to quit, c to continue without paging--
+   0x000000000040089b <+181>:	call   0x400660 <__stack_chk_fail@plt>
+   0x00000000004008a0 <+186>:	leave  
+   0x00000000004008a1 <+187>:	ret
+
+   1
+100
+2
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+
